@@ -1,4 +1,5 @@
 <script>
+import {store} from '../store'
 export default{
 name: 'HeaderC'
 }
@@ -17,6 +18,7 @@ name: 'HeaderC'
         <option class="bg-danger"  value="3">Three</option>
         </select>
     </div>
+    
 </header>
 </template>
 
