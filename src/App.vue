@@ -15,7 +15,7 @@ export default{
     },
     methods:{
         getCards(){
-
+            store.loading= true
             store.apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php' 
 
             if(store.searchText){
@@ -29,6 +29,7 @@ export default{
                 console.log(store.apiUrl)
                 store.cardList = res.data.data
                 console.log(store.cardList)
+                store.loading= false
             })
         },
         getArch(){
