@@ -15,23 +15,41 @@ export default{
     },
     methods:{
         getCards(){
+
+            store.apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php' 
+
+            if(store.searchText){
+                store.apiUrl += `?archetype=${store.searchText}`
+            }
+
             axios
             .get(store.apiUrl)
             .then (res => {
                 console.log(res.data)
+                console.log(store.apiUrl)
                 store.cardList = res.data.data
                 console.log(store.cardList)
+            })
+        },
+        getArch(){
+            axios
+            .get(store.apiUrlArch)
+            .then (res => {
+                console.log(res.data)
+                store.archetypeList = res.data
+                console.log(store.archetypeList)
             })
         }
     },
     mounted(){
         this.getCards() 
+        this.getArch()
     }
 }
 </script>
 
 <template>
-<HeaderC/>
+<HeaderC @archSearch="getCards"/>
 <MainC/>
 
 
